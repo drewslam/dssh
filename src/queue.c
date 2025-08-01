@@ -1,21 +1,38 @@
 // dssh - Drewslam's Shell
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../include/queue.h"
 
 void initWord(Word* word, char* in) {
-  word->word = in;
+  word->word = malloc(strlen(in) + 1);
+  if (word->word != NULL) {
+    strcpy(word->word, in);
+  }
   word->next = NULL;
   word->prev = NULL;
 }
 
-void initWordQueue(WordQueue *w) {
+void initWordQueue(WordQueue* w) {
   w->head = NULL;
   w->tail = NULL;
   w->size = 0;
 }
 
-void enqueue(WordQueue *w, Word *word) {
+void freeWordQueue(WordQueue* w) {
+  Word* current = w->head;
+  while (current != NULL) {
+    Word* next = current->next;
+    free(current->word);
+    free(current);
+    current = next;
+  }
+  w->head = NULL;
+  w->tail = NULL;
+  w->size = 0;
+}
+
+void enqueue(WordQueue* w, Word* word) {
   if (w->head == NULL) {
     w->head = w->tail = word;
     return;
@@ -27,7 +44,7 @@ void enqueue(WordQueue *w, Word *word) {
   w->size++;
 }
 
-bool dequeue(WordQueue *w, Word *word) {
+bool dequeue(WordQueue* w, Word* word) {
   Word *curr = w->head;
   while (curr != NULL && curr != word) {
     curr = curr->next;
@@ -51,8 +68,8 @@ bool dequeue(WordQueue *w, Word *word) {
   return true;
 }
 
-Word* front(WordQueue *w) { return w->head; }
+Word* front(WordQueue* w) { return w->head; }
 
-bool isEmpty(WordQueue *w) { return w->head == NULL; }
+bool isEmpty(WordQueue* w) { return w->head == NULL; }
 
 int size(WordQueue* w) { return w->size; }
