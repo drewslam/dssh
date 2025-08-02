@@ -73,3 +73,12 @@ Word* front(WordQueue* w) { return w->head; }
 bool isEmpty(WordQueue* w) { return w->head == NULL; }
 
 int size(WordQueue* w) { return w->size; }
+
+void printQueue(WordQueue* w) {
+  Word* word = w->head;
+  while (word != NULL) {
+    printf("%s ", word->word);
+    word = word->next;
+  }
+  printf("\n");
+}
