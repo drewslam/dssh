@@ -21,7 +21,9 @@ void initWord(Word* word, char* in);
 
 void initWordQueue(WordQueue* w);
 
-void enqueue(WordQueue* w, Word *word);
+void freeWordQueue(WordQueue* w);
+
+void enqueue(WordQueue* w, Word* word);
 
 bool dequeue(WordQueue* w, Word* word);
 
@@ -30,5 +32,7 @@ Word* front(WordQueue* w);
 bool isEmpty(WordQueue* w);
 
 int size(WordQueue* w);
+
+void printQueue(WordQueue* w);
 
 #endif

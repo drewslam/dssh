@@ -45,7 +45,7 @@ void enqueue(WordQueue* w, Word* word) {
 }
 
 bool dequeue(WordQueue* w, Word* word) {
-  Word *curr = w->head;
+  Word* curr = w->head;
   while (curr != NULL && curr != word) {
     curr = curr->next;
   }
