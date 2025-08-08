@@ -47,7 +47,7 @@ int main(void) {
       Word *tmp = queue.head->next;
       args[0] = command;
       for (int i = 0; i < queue.size; i++) {
-        args[1] = tmp->word;
+        args[i + 1] = tmp->word;
         tmp = tmp->next;
       }
       args[queue.size] = NULL;
