@@ -8,6 +8,9 @@ void initWord(Word* word, char* in) {
   word->word = malloc(strlen(in) + 1);
   if (word->word != NULL) {
     strcpy(word->word, in);
+  } else {
+    fprintf(stderr, "memory allocation failure\n");
+    exit(EXIT_FAILURE);
   }
   word->next = NULL;
   word->prev = NULL;
@@ -35,12 +38,11 @@ void freeWordQueue(WordQueue* w) {
 void enqueue(WordQueue* w, Word* word) {
   if (w->head == NULL) {
     w->head = w->tail = word;
-    return;
+  } else {
+    w->tail->next = word;
+    word->prev = w->tail;
+    w->tail = word;
   }
-
-  w->tail->next = word;
-  word->prev = w->tail;
-  w->tail = word;
   w->size++;
 }
 
