@@ -6,6 +6,7 @@ An interactive Unix-compatible shell written in C.
 
 - Interactive command prompt.
 - Execution of Unix commands with arguments.
+- File system traversal via the builtin 'cd' command.
 - Basic error handling
 - Clean exit with "exit" keyword.
 
@@ -30,8 +31,10 @@ drwxr-xr-x. 1 drewslam drewslam    42 Aug  9 09:54 src
 
 ## To Be Implemented
 
-- Support for builtins (ex. cd)
+- Expanded support for various builtin commands
+- History and recall using the Up-Arrow key
 - Pipe operators
+- Tab completion
 - A high-level scripting language
 
 ## Requirements
