@@ -19,7 +19,7 @@ An interactive Unix-compatible shell written in C.
 
 ## To Be Implemented
 
-- Expanded support for various builtin commands
+- Expanded support for various built-in commands
 - History and recall using the Up-Arrow key
 - Pipe ('|') operator support
 - Tab completion
