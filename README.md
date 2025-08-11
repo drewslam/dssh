@@ -11,20 +11,6 @@ An interactive Unix-compatible shell written in C.
 - Basic error handling
 - Exit cleanly with the 'exit' keyword.
 
-ex.
-```
-dssh> ls .
-build  dssh  include  Makefile  README.md  src
-dssh> ls -l .
-total 40
-drwxr-xr-x. 1 drewslam drewslam    42 Aug  9 09:55 build
--rwxr-xr-x. 1 drewslam drewslam 28808 Aug  9 09:55 dssh
-drwxr-xr-x. 1 drewslam drewslam    46 Aug  3 09:23 include
--rw-r--r--. 1 drewslam drewslam   653 Aug  5 06:17 Makefile
--rw-r--r--. 1 drewslam drewslam   290 Aug  8 04:21 README.md
-drwxr-xr-x. 1 drewslam drewslam    42 Aug  9 09:54 src
-```
-
 ## Architecture
 
 - Custom doubly-linked list queue implementation for command parsing.
@@ -57,4 +43,14 @@ make
 
 ```bash
 ./dssh
+dssh> ls .
+build  dssh  include  Makefile  README.md  src
+dssh> ls -l .
+total 40
+drwxr-xr-x. 1 drewslam drewslam    42 Aug  9 09:55 build
+-rwxr-xr-x. 1 drewslam drewslam 28808 Aug  9 09:55 dssh
+drwxr-xr-x. 1 drewslam drewslam    46 Aug  3 09:23 include
+-rw-r--r--. 1 drewslam drewslam   653 Aug  5 06:17 Makefile
+-rw-r--r--. 1 drewslam drewslam   290 Aug  8 04:21 README.md
+drwxr-xr-x. 1 drewslam drewslam    42 Aug  9 09:54 src
 ```
