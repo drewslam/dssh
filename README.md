@@ -6,9 +6,10 @@ An interactive Unix-compatible shell written in C.
 
 - Interactive command prompt.
 - Execution of Unix commands with arguments.
-- File system traversal via the builtin 'cd' command.
+- Traversal of the file system via the built-in 'cd' command.
+- Show the current working directory with the built-in 'pwd' command.
 - Basic error handling
-- Clean exit with "exit" keyword.
+- Exit cleanly with the 'exit' keyword.
 
 ex.
 ```
@@ -28,12 +29,13 @@ drwxr-xr-x. 1 drewslam drewslam    42 Aug  9 09:54 src
 
 - Custom doubly-linked list queue implementation for command parsing.
 - Fork-exec model for command execution.
+- Custom handler for built-in commands.
 
 ## To Be Implemented
 
 - Expanded support for various builtin commands
 - History and recall using the Up-Arrow key
-- Pipe operators
+- Pipe ('|') operator support
 - Tab completion
 - A high-level scripting language
 
