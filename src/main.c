@@ -1,20 +1,19 @@
 // dssh - Drewslam's Shell
+// Author: Andrew Souza
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <fcntl.h>
-#include <sys/wait.h>
+#include <unistd.h>
 #include "../include/queue.h"
+#include "../include/exec.h"
 
-#define MAX_INPUT 1024
-#define MAX_WORD_LEN 50
+#define MAX_LINE_LEN 1024
 
 int main(void) {
-  char input[MAX_INPUT];
+  char input[MAX_LINE_LEN];
   while (1) {
     printf("dssh> ");
-    if (!fgets(input, MAX_INPUT, stdin))
+    if (!fgets(input, MAX_LINE_LEN, stdin))
       break;
 
     input[strcspn(input, "\n")] = '\0'; // remove newline
@@ -37,26 +36,8 @@ int main(void) {
       enqueue(&queue, queuedWord);
       token = strtok(NULL, " ");
     }
-    char command[MAX_WORD_LEN];
-    strcpy(command, queue.head->word);
 
-    int rc = fork();
-
-    if (rc == 0) {
-      char *args[queue.size + 1];
-      Word *tmp = queue.head->next;
-      args[0] = command;
-      for (int i = 0; i < queue.size; i++) {
-        args[i + 1] = tmp->word;
-        tmp = tmp->next;
-      }
-      args[queue.size] = NULL;
-      execvp(command, args);
-      perror("exec failure");
-      exit(EXIT_FAILURE);
-    } else {
-      wait(NULL);
-    }
+    handle_exec(&queue);
 
     freeWordQueue(&queue);
   }
