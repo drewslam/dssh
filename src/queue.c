@@ -46,7 +46,29 @@ void enqueue(WordQueue* w, Word* word) {
   w->size++;
 }
 
-bool dequeue(WordQueue* w, Word* word) {
+bool dequeue(WordQueue *w) {
+  if (w->head == NULL) {
+    return false;
+  }
+
+  Word* tbr = w->head;
+  w->head = w->head->next;
+
+  if (w->head != NULL) {
+    w->head->prev = NULL;
+  } else {
+    w->tail = NULL;
+  }
+
+  w->size--;
+
+  free(tbr->word);
+  free(tbr);
+
+  return true;
+}
+
+bool removeWord(WordQueue* w, Word* word) {
   Word* curr = w->head;
   while (curr != NULL && curr != word) {
     curr = curr->next;
@@ -74,7 +96,7 @@ Word* front(WordQueue* w) { return w->head; }
 
 bool isEmpty(WordQueue* w) { return w->head == NULL; }
 
-int size(WordQueue* w) { return w->size; }
+int getSize(WordQueue* w) { return w->size; }
 
 void printQueue(WordQueue* w) {
   Word* word = w->head;

@@ -25,13 +25,15 @@ void freeWordQueue(WordQueue* w);
 
 void enqueue(WordQueue* w, Word* word);
 
-bool dequeue(WordQueue* w, Word* word);
+bool dequeue(WordQueue* w);
+
+bool removeWord(WordQueue* w, Word* word);
 
 Word* front(WordQueue* w);
 
 bool isEmpty(WordQueue* w);
 
-int size(WordQueue* w);
+int getSize(WordQueue* w);
 
 void printQueue(WordQueue* w);
 
