@@ -30,7 +30,7 @@ void handle_exec(WordQueue *q) {
     return;
   }
 
-  char workingDir[PATH_MAX];
+  // char workingDir[PATH_MAX];
   char *args[q->size + 1];
   Word *tmp = q->head;
   for (int i = 0; i < q->size; i++) {
@@ -39,6 +39,10 @@ void handle_exec(WordQueue *q) {
   }
   args[q->size] = NULL;
 
+  if (!isBuiltin(args)) {
+    handle_fork(args);
+  }
+  /*
   if (strcmp(args[0], "cd") == 0) {
     handleCD(args[1]);
   } else if (strcmp(args[0], "pwd") == 0) {
@@ -46,4 +50,5 @@ void handle_exec(WordQueue *q) {
   } else {
     handle_fork(args);
   }
+  */
 }
